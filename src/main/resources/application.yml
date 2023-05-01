@@ -1,0 +1,7 @@
+server:
+  port: 9998
+
+logging:
+  level:
+    org.springframework.security: TRACE
+    org.springframework.security.jackson2: INFO
