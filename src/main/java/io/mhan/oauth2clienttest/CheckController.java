@@ -16,4 +16,9 @@ public class CheckController {
 
         return authentication.getName();
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 }
