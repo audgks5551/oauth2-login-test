@@ -31,7 +31,7 @@ public class InstagramController {
     @GetMapping("/login")
     public String login(RedirectAttributes redirectAttributes) {
 
-        redirectAttributes.addAttribute("client_id", "128597803539517");
+        redirectAttributes.addAttribute("client_id", "[client-id]");
         redirectAttributes.addAttribute("response_type", "code");
         redirectAttributes.addAttribute("redirect_uri", "https://localhost/instagram/callback");
         // https://localhost/instagram/callback?code=~~
@@ -46,8 +46,8 @@ public class InstagramController {
     public String callback(String code, HttpSession session) {
 
         AccessTokenRequest request = AccessTokenRequest.builder()
-                .clientId("128597803539517")
-                .clientSecret("18337536d0eadae2040e226a3e27727b")
+                .clientId("[client-id]")
+                .clientSecret("[client-secret]")
                 .code(code)
                 .grantType("authorization_code")
                 .redirectUri("https://localhost/instagram/callback")
@@ -66,11 +66,9 @@ public class InstagramController {
 
         Authentication authentication =
                 new OAuth2AuthenticationToken(user, user.getAuthorities(), "instagram");
-
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        // SPRING_SECURITY_CONTEXT
+        // SPRING_SECURITY_CONTEXT_KEY = "SPRING_SECURITY_CONTEXT"
         session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext());
-
 
         return "redirect:/check";
     }

@@ -1,6 +1,5 @@
 package io.mhan.oauth2clienttest.security;
 
-import io.mhan.oauth2clienttest.security.CustomOauth2Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +17,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         ClientRegistration facebookClientRegistration = CommonOAuth2Provider.FACEBOOK.getBuilder("facebook")
-                .clientId("1288617265388968")
-                .clientSecret("fc81598cfd054986393aeed2608b282f")
+                .clientId("[client-id]")
+                .clientSecret("[client-secret]")
                 .redirectUri("{baseUrl}/{action}/custom/oauth2/code/{registrationId}")
                 .build();
 
